@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Memórias</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f1f7f1;
+    margin: 0;
+    padding: 0;
+  }
+  header, nav {
+    background: #2f6b2f;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+  }
+  nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .profile {
+    background: white;
+    text-align: center;
+    padding: 25px 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  .profile img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 3px solid #2f6b2f;
+    object-fit: cover;
+  }
+  .profile h2 { margin-top: 10px; }
+  .grid {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .grid img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Minhas Memórias</h1>
+</header>
+
+<nav>
+  <a href="home.html">Início</a>
+  <a href="publicar.html">Publicar</a>
+  <a href="memorias.html">Memórias</a>
+  <a href="index.html">Sair</a>
+</nav>
+
+<div class="profile">
+  <img id="userFoto">
+  <h2 id="userNome"></h2>
+  <p id="userBio"></p>
+</div>
+
+<div class="grid" id="photoGrid"></div>
+
+<script>
+  // CARREGAR DADOS DO USUÁRIO
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (!user) {
+    window.location.href = "index.html"; // impede acessar sem login
+  }
+
+  document.getElementById("userNome").textContent = user.nome;
+  document.getElementById("userBio").textContent = user.bio || "";
+  document.getElementById("userFoto").src = user.foto || "default.jpg";
+
+  // CARREGAR FOTOS
+  const fotos = JSON.parse(localStorage.getItem("fotos") || "[]");
+  const grid = document.getElementById("photoGrid");
+
+  if (fotos.length === 0) {
+    grid.innerHTML = "<p style='grid-column:1 / -1;text-align:center;'>Nenhuma memória publicada.</p>";
+  } else {
+    fotos.forEach(f => {
+      const img = document.createElement("img");
+      img.src = f.src;
+      grid.appendChild(img);
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Login</title>
+<style>
+  body {
+    background: #eaf5ea;
+    font-family: Arial;
+    margin: 0; padding: 0;
+    display: flex; justify-content: center; align-items: center;
+    height: 100vh;
+  }
+  .login-box {
+    background: white;
+    padding: 25px;
+    width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    text-align: center;
+  }
+  input, textarea {
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+  }
+  button {
+    width: 100%;
+    background: #2f6b2f;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<div class="login-box">
+  <h2>Entrar</h2>
+
+  <input type="text" id="nome" placeholder="Seu nome">
+  <textarea id="bio" placeholder="Sua bio (opcional)"></textarea>
+  <input type="file" id="foto" accept="image/*">
+
+  <button onclick="entrar()">Entrar</button>
+</div>
+
+<script>
+function entrar() {
+  const nome = document.getElementById("nome").value.trim();
+  const bio = document.getElementById("bio").value.trim();
+  const fotoInput = document.getElementById("foto");
+
+  if (!nome) {
+    alert("Digite seu nome!");
+    return;
+  }
+
+  // Ler foto e salvar no localStorage
+  if (fotoInput.files.length > 0) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      salvarUsuario(nome, bio, e.target.result);
+    };
+    reader.readAsDataURL(fotoInput.files[0]);
+  } else {
+    salvarUsuario(nome, bio, null);
+  }
+}
+
+function salvarUsuario(nome, bio, foto) {
+  const user = { nome, bio, foto };
+  localStorage.setItem("user", JSON.stringify(user));
+  window.location.href = "memorias.html"; // vai para a página dinâmica
+}
+</script>
+
+</body>
+</html>

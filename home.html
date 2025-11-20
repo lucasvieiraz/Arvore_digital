@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>EcoMemória</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #eaf5ea;
+    text-align: center;
+    margin: 0; 
+    padding: 0;
+  }
+
+  /* ======= HEADER ======= */
+  header {
+    background: #2f6b2f;
+    color: white;
+    padding: 20px 0 30px;
+    position: relative;
+  }
+
+  #logoCV {
+    width: 140px;
+    display: block;
+    margin: 0 auto 10px auto;
+  }
+
+  /* ======= MENU ======= */
+  nav {
+    background: #2f6b2f;
+    padding: 12px 0;
+  }
+  nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  /* ======= ÁRVORE ======= */
+  #treeContainer {
+    margin: 30px auto;
+    width: 320px;
+  }
+
+  /* ======= MUNICÍPIOS ======= */
+  /* ======= MUNICÍPIOS ======= */
+.municipios-section {
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.municipios-section h2 {
+  font-size: 28px;
+  color: #2f6b2f;
+  margin-bottom: 12px;
+}
+
+.municipios-section p {
+  color: #444;
+  margin-bottom: 28px;
+  font-size: 15px;
+}
+
+.grid-municipios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 26px;
+  width: 92%;
+  margin: auto;
+}
+
+.cidade {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* GARANTE QUE A IMAGEM NÃO SAIA DO CARTÃO */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.cidade:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.22);
+}
+
+.cidade img {
+  width: 100%;
+  max-width: 170px;       /* tamanho máximo permitido */
+  height: 115px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+
+  /* impede sair da caixa */
+  display: block;
+}
+
+.cidade:hover img {
+  transform: scale(1.05);
+}
+
+.cidade span {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #2f6b2f;
+  font-size: 15px;
+  text-align: center;
+}
+
+  /* BOTÕES */
+  button {
+    background: #2f6b2f;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #245524;
+  }
+
+  svg circle {
+    transition: opacity 0.5s ease, r 0.5s ease;
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <!-- LOGO DO CIRCUITO (SUBSTITUA O SRC PELO SEU ARQUIVO REAL) -->
+  <img id="logoCV" src="https://www.caminhosverdesdeminas.com.br/wp-content/uploads/2019/01/logo.png" alt="Logo Caminhos Verdes">
+
+  <h1>EcoMemória</h1>
+</header>
+
+<nav>
+  <a href="home.html">Início</a>
+  <a href="publicar.html">Publicar</a>
+  <a href="memorias.html">Memórias</a>
+  <a href="sobre.html">Sobre</a>
+  <a href="index.html">Login</a>
+</nav>
+
+<!-- ============ ÁRVORE ============ -->
+<div id="treeContainer">
+  <svg width="300" height="350" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" role="img">
+    <rect x="95" y="150" width="15" height="120" fill="#8b5a2b" />
+    <circle id="leaf1" cx="100" cy="140" r="20" fill="#3fa34d" opacity="0.2" />
+    <circle id="leaf2" cx="80" cy="120" r="25" fill="#47b35a" opacity="0.2" />
+    <circle id="leaf3" cx="120" cy="120" r="25" fill="#47b35a" opacity="0.2" />
+    <circle id="leaf4" cx="60" cy="100" r="28" fill="#5cc46b" opacity="0.2" />
+    <circle id="leaf5" cx="140" cy="100" r="28" fill="#5cc46b" opacity="0.2" />
+    <circle id="leaf6" cx="100" cy="75" r="35" fill="#6ddf7c" opacity="0.2" />
+  </svg>
+</div>
+
+<br>
+
+<input type="file" id="photoInput" accept="image/*" />
+<br><br>
+<button id="uploadBtn">Enviar Foto</button>
+
+<!-- ============ MUNICÍPIOS ============ -->
+<div class="municipios-section">
+  <h2>CONHEÇA OS MUNICÍPIOS DA IGR CAMINHOS VERDES DE MINAS</h2>
+  <p>Cada município possui seus próprios encantos. Explore a seguir:</p>
+
+  <div class="grid-municipios">
+
+    <!-- Cada cidade tem UM bloco -->
+    <div class="cidade">
+      <img src="https://www.caminhosverdesdeminas.com.br/wp-content/uploads/2019/01/bicas_0.jpg">
+      <span>BICAS</span>
+    </div>
+
+    <div class="cidade">
+      <img src="https://www.caminhosverdesdeminas.com.br/wp-content/uploads/2021/11/img-chacara.jpg">
+      <span>CHÁCARA</span>
+    </div>
+
+    <div class="cidade">
+      <img src="https://www.caminhosverdesdeminas.com.br/wp-content/uploads/2019/01/chiador0.jpg">
+      <span>CHIADOR</span>
+    </div>
+
+    <div class="cidade">
+      <img src="https://www.caminhosverdesdeminas.com.br/wp-content/uploads/2019/03/descoberto00-1.jpg">
+      <span>DESCOBERTO</span>
+    </div>
+
+    <div class="cidade">
+      <img src="https://www.caminhosverdesdeminas.com.br/wp-content/uploads/2020/02/Goiana0a.jpg">
+      <span>GOIANÁ</span>
+    </div>
+
+    <div class="cidade">
+      <img src="https://www.caminhosverdesdeminas.com.br/wp-content/uploads/2019/01/guarani00.jpg">
+      <span>GUARANI</span>
+    </div>
+
+    <div class="cidade">
+      <img src="https://www.caminhosverdesdeminas.com.br/wp-content/uploads/2024/12/foto-capa-guarara.webp">
+      <span>GUARARÁ</span>
+    </div>
+
+    <div class="cidade">
+      <img src="https://www.caminhosverdesdeminas.com.br/wp-content/uploads/2020/02/mar_de_espanha2020_3_capa.jpg">
+      <span>MAR DE ESPANHA</span>
+    </div>
+
+    <div class="cidade">
+      <img src="https://www.caminhosverdesdeminas.com.br/wp-content/uploads/2021/11/img-pequeri.jpg">
+      <span>PEQUERI</span>
+    </div>
+
+    <div class="cidade">
+      <img src="https://www.caminhosverdesdeminas.com.br/wp-content/uploads/2019/01/piau.jpg">
+      <span>PIAU</span>
+    </div>
+
+    <div class="cidade">
+      <img src="https://www.caminhosverdesdeminas.com.br/wp-content/uploads/2019/01/rio_novo.jpg">
+      <span>RIO NOVO</span>
+    </div>
+
+    <div class="cidade">
+      <img src="https://www.caminhosverdesdeminas.com.br/wp-content/uploads/2019/03/riopomba00.jpg">
+      <span>RIO POMBA</span>
+    </div>
+
+    <div class="cidade">
+      <img src="https://www.caminhosverdesdeminas.com.br/wp-content/uploads/2021/11/img-rochedo.jpg">
+      <span>ROCHEDO DE MINAS</span>
+    </div>
+
+    <div class="cidade">
+      <img src="https://www.caminhosverdesdeminas.com.br/wp-content/uploads/2019/01/sao_joao_nepomuceno.jpg">
+      <span>SÃO JOÃO NEPOMUCENO</span>
+    </div>
+
+    <div class="cidade">
+      <img src="https://www.caminhosverdesdeminas.com.br/wp-content/uploads/2019/03/tabuleiro0_frente.jpg">
+      <span>TABULEIRO</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  let fotos = JSON.parse(localStorage.getItem('fotos') || '[]');
+
+  function atualizarArvore() {
+    const total = fotos.length;
+    for(let i=1; i<=6; i++) {
+      const leaf = document.getElementById('leaf' + i);
+      if(total >= i) {
+        leaf.style.opacity = '1';
+      } else {
+        leaf.style.opacity = '0.2';
+      }
+    }
+  }
+
+  function uploadPhoto() {
+    const input = document.getElementById('photoInput');
+    if(input.files.length === 0) {
+      alert('Selecione uma foto antes de enviar!');
+      return;
+    }
+    const file = input.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+      fotos.push({ src: e.target.result });
+      localStorage.setItem('fotos', JSON.stringify(fotos));
+      atualizarArvore();
+      alert('Foto enviada com sucesso!');
+      input.value = '';
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  document.getElementById('uploadBtn').addEventListener('click', uploadPhoto);
+
+  atualizarArvore();
+</script>
+
+</body>
+</html>
